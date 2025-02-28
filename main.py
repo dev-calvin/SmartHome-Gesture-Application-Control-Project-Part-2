@@ -68,17 +68,17 @@ def extractFeatureVectors(type, frames):
     featureVectors = []
     for frame in range(frames):
         f = frame + 1
-        featureVectors.append(extractHandShape(f'.\{type}Frames\{f:05d}.png')[0])
+        featureVectors.append(extractHandShape(f'./{type}Frames/{f:05d}.png')[0])
 
     return featureVectors
 
 
 def getAllMiddleFrames(type):
-    filePaths = getAllFilePaths(f'.\{type}')
+    filePaths = getAllFilePaths(f'./{type}')
     i = 0
     for path in filePaths:
         # frames.append(getMiddleFrame(path))
-        frameExtractor(path,f'.\{type}Frames',i)
+        frameExtractor(path,f'./{type}Frames',i)
         i += 1
     return (filePaths, i)
 
