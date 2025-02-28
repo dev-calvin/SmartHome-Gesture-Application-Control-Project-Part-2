@@ -23,6 +23,8 @@ def main():
     testFeatureVectors = extractFeatureVectors('test', testFrames)
     trainFeatureVectors = extractFeatureVectors('traindata', trainFrames)
 
+    results = testPaths
+
     results = []
     for index, test in enumerate(testPaths):
         results.append(findClosest(testFeatureVectors[index], trainFeatureVectors))
@@ -93,30 +95,6 @@ def getAllFilePaths(directory):
     return filePaths
 
 
-# def getMiddleFrame(videoPath):
-#     videoCapture = cv2.VideoCapture(videoPath)
-#
-#     if not videoCapture.isOpened():
-#         raise Exception(f"Could not find video file: {videoPath}")
-#
-#     totalFrames = int(videoCapture.get(cv2.CAP_PROP_FRAME_COUNT))
-#     middleFrame = totalFrames // 2
-#
-#     videoCapture.set(cv2.CAP_PROP_POS_FRAMES, middleFrame)
-#     ret, frame = videoCapture.read()
-#     greyFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-#
-#     # if ret:
-#     #     cv2.imwrite(outputPath, frame)
-#     #     print(f"Middle frame saved to {output_path}")
-#     # else:
-#     #     print("Failed to read frame")
-#
-#     videoCapture.release()
-#
-#     return greyFrame
-
-
 def extractHandShape(framePath):
     image = cv2.imread(framePath)
     grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -124,23 +102,4 @@ def extractHandShape(framePath):
     extraction = featureExtractor.extract_feature(grayImage)
     return extraction
 
-# =============================================================================
-# Get the penultimate layer for trainig data
-# =============================================================================
-# your code goes here
-# Extract the middle frame of each gesture video
-
-
-# =============================================================================
-# Get the penultimate layer for test data
-# =============================================================================
-# your code goes here
-# Extract the middle frame of each gesture video
-
-
-
-
-# =============================================================================
-# Recognize the gesture (use cosine similarity for comparing the vectors)
-# =============================================================================
 main()
