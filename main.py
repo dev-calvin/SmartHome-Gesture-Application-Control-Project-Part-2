@@ -17,15 +17,15 @@ from frameextractor import frameExtractor
 from handshape_feature_extractor import HandShapeFeatureExtractor
 
 def main():
-    testPaths, testFrames = getAllMiddleFrames('test')
-    trainPaths, trainFrames = getAllMiddleFrames('traindata')
+    # testPaths, testFrames = getAllMiddleFrames('test')
+    # trainPaths, trainFrames = getAllMiddleFrames('traindata')
+    #
+    # testFeatureVectors = extractFeatureVectors('test', testFrames)
+    # trainFeatureVectors = extractFeatureVectors('traindata', trainFrames)
 
-    testFeatureVectors = extractFeatureVectors('test', testFrames)
-    trainFeatureVectors = extractFeatureVectors('traindata', trainFrames)
-
-    results = ['test']
-    for index, test in enumerate(testPaths):
-        results.append(findClosest(testFeatureVectors[index], trainFeatureVectors))
+    # results = []
+    # for index, test in enumerate(testPaths):
+    #     results.append(findClosest(testFeatureVectors[index], trainFeatureVectors))
 
     # trainLabels = []
     # for i in range(len(results)):
