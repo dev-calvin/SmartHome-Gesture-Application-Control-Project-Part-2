@@ -23,7 +23,7 @@ def main():
     testFeatureVectors = extractFeatureVectors('test', testFrames)
     trainFeatureVectors = extractFeatureVectors('traindata', trainFrames)
 
-    results = testPaths
+    results = os.listdir('/')
 
     results = []
     for index, test in enumerate(testPaths):
