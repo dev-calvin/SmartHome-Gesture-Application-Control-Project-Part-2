@@ -33,7 +33,7 @@ def main():
         trainLabel = trainFile.split('.')[0]
         trainLabels.append(trainLabel)
 
-    df = pd.DataFrame(trainLabels)
+    df = pd.DataFrame(results)
     df.to_csv('./Results.csv', header=False, index=False)
 
     return
