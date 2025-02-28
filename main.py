@@ -27,14 +27,14 @@ def main():
     for index, test in enumerate(testPaths):
         results.append(findClosest(testFeatureVectors[index], trainFeatureVectors))
 
-    trainLabels = []
-    for i in range(len(results)):
-        trainFile = trainPaths[results[i]].split('\\')[-1]
-        trainLabel = trainFile.split('.')[0]
-        trainLabels.append(trainLabel)
+    # trainLabels = []
+    # for i in range(len(results)):
+    #     trainFile = trainPaths[results[i]].split('\\')[-1]
+    #     trainLabel = trainFile.split('.')[0]
+    #     trainLabels.append(trainLabel)
 
     df = pd.DataFrame(results)
-    df.to_csv('./Results.csv', header=False, index=False)
+    df.to_csv('/Results.csv', header=False, index=False)
 
     return
 
