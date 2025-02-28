@@ -23,9 +23,7 @@ def main():
     testFeatureVectors = extractFeatureVectors('test', testFrames)
     trainFeatureVectors = extractFeatureVectors('traindata', trainFrames)
 
-    results = os.listdir('/')
-
-    # results = []
+    results = ['test']
     for index, test in enumerate(testPaths):
         results.append(findClosest(testFeatureVectors[index], trainFeatureVectors))
 
