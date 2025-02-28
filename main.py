@@ -31,7 +31,8 @@ def main():
     for i in range(len(results)):
         trainFile = trainPaths[results[i]].split('\\')[-1]
         trainLabel = trainFile.split('.')[0]
-        trainLabels.append(trainLabel)
+        # trainLabels.append(trainLabel)
+        trainLabels.append(results[i])
 
     df = pd.DataFrame(trainLabels)
     df.to_csv('./Results.csv', header=False, index=False)
