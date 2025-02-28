@@ -25,7 +25,7 @@ def main():
 
     results = os.listdir('/')
 
-    results = []
+    # results = []
     for index, test in enumerate(testPaths):
         results.append(findClosest(testFeatureVectors[index], trainFeatureVectors))
 
