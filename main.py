@@ -8,7 +8,6 @@ import cv2
 import numpy as np
 import os
 import tensorflow as tf
-from PIL import Image
 import math
 import pandas as pd
 
@@ -94,33 +93,35 @@ def getAllFilePaths(directory):
     return filePaths
 
 
-def getMiddleFrame(videoPath):
-    videoCapture = cv2.VideoCapture(videoPath)
+# def getMiddleFrame(videoPath):
+#     videoCapture = cv2.VideoCapture(videoPath)
+#
+#     if not videoCapture.isOpened():
+#         raise Exception(f"Could not find video file: {videoPath}")
+#
+#     totalFrames = int(videoCapture.get(cv2.CAP_PROP_FRAME_COUNT))
+#     middleFrame = totalFrames // 2
+#
+#     videoCapture.set(cv2.CAP_PROP_POS_FRAMES, middleFrame)
+#     ret, frame = videoCapture.read()
+#     greyFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+#
+#     # if ret:
+#     #     cv2.imwrite(outputPath, frame)
+#     #     print(f"Middle frame saved to {output_path}")
+#     # else:
+#     #     print("Failed to read frame")
+#
+#     videoCapture.release()
+#
+#     return greyFrame
 
-    if not videoCapture.isOpened():
-        raise Exception(f"Could not find video file: {videoPath}")
 
-    totalFrames = int(videoCapture.get(cv2.CAP_PROP_FRAME_COUNT))
-    middleFrame = totalFrames // 2
-
-    videoCapture.set(cv2.CAP_PROP_POS_FRAMES, middleFrame)
-    ret, frame = videoCapture.read()
-
-    # if ret:
-    #     cv2.imwrite(outputPath, frame)
-    #     print(f"Middle frame saved to {output_path}")
-    # else:
-    #     print("Failed to read frame")
-
-    videoCapture.release()
-
-    return frame
-
-
-def extractHandShape(frame):
-    image = Image.open(frame).convert("L")
+def extractHandShape(framePath):
+    image = cv2.imread(framePath)
+    grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     featureExtractor = HandShapeFeatureExtractor.get_instance()
-    extraction = featureExtractor.extract_feature(np.array(image))
+    extraction = featureExtractor.extract_feature(grayImage)
     return extraction
 
 # =============================================================================
