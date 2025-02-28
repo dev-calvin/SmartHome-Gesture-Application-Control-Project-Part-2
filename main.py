@@ -27,7 +27,7 @@ def main():
     for index, test in enumerate(testPaths):
         results.append(findClosest(testFeatureVectors[index], trainFeatureVectors))
 
-    trainLabels = []
+    trainLabels = ['test']
     for i in range(len(results)):
         trainFile = trainPaths[results[i]].split('\\')[-1]
         trainLabel = trainFile.split('.')[0]
@@ -144,5 +144,4 @@ def extractHandShape(framePath):
 # =============================================================================
 # Recognize the gesture (use cosine similarity for comparing the vectors)
 # =============================================================================
-if __name__ == '__main__':
-    main()
+main()
